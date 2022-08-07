@@ -1,3 +1,11 @@
+let myNotes = document.createElement("form");
+myNotes.innerHTML += `<h1>Мои заметки / важные дела</h1>
+<input class="note" type="text" placeholder="Добавить заметку или важное дело" />
+<button type="submit">Добавить</button>
+<div class="result"></div>`;
+document.body.append(myNotes);
+
+
 let form = document.querySelector("form");
 form.addEventListener("submit", function(event) {
     event.preventDefault();
