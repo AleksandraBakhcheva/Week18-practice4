@@ -5,6 +5,12 @@ myNotes.innerHTML += `<h1>Мои заметки / важные дела</h1>
 <div class="result"></div>`;
 document.body.append(myNotes);
 
+document.addEventListener("DOMContentLoaded", function(event) {
+    let myNotes = JSON.parse(localStorage.getItem("note"));
+    if (myNotes !== null) {
+        document.querySelector(".result").append(myNotes);
+    }
+});
 
 let form = document.querySelector("form");
 form.addEventListener("submit", function(event) {
