@@ -7,8 +7,10 @@ document.body.append(myNotes);
 
 document.addEventListener("DOMContentLoaded", function(event) {
     let myNotes = JSON.parse(localStorage.getItem("note"));
-    if (myNotes !== null) {
-        document.querySelector(".result").append(myNotes);
+    for (let i = 0; i < myNotes.length; i++) {
+        let unorderedList = document.createElement("ul");
+        unorderedList.innerHTML += `<li>${myNotes[i]}</li>`;
+        document.querySelector(".result").append(unorderedList);
     }
 });
 
@@ -19,6 +21,7 @@ form.addEventListener("submit", function(event) {
 });
 
 let notes = [];
+let note = document.querySelector(".note").value;
 
 function showNote() {
     let note = document.querySelector(".note").value;
