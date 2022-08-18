@@ -6,16 +6,14 @@ myNotes.innerHTML += `<h1>Мои заметки / важные дела</h1>
 document.body.append(myNotes);
 
 let notes = [];
-console.log(notes);
 
 document.addEventListener("DOMContentLoaded", function(event) {
-    let totalNotes = JSON.parse(localStorage.getItem("note"));
-    notes = totalNotes;
-    if (notes.length > 0) {
-        for (let i = 0; i < notes.length; i++) {
-            let unorderedList = document.createElement("ul");
-            unorderedList.innerHTML += `<li>${notes[i]}</li>`;
-            document.querySelector(".result").append(unorderedList);
+    if (localStorage.getItem("note") !== null) {
+    notes = JSON.parse(localStorage.getItem("note"));
+    for (let i = 0; i < notes.length; i++) {
+        let unorderedList = document.createElement("ul");
+        unorderedList.innerHTML += `<li>${notes[i]}</li>`;
+        document.querySelector(".result").append(unorderedList);
     }}
     else {
         return 0;
@@ -35,7 +33,6 @@ function showNote() {
         unorderedList.innerHTML += `<li>${note}</li>`;
         document.querySelector(".result").append(unorderedList);
         notes.push(note);
-        console.log(notes);
         localStorage.setItem("note", JSON.stringify(notes));
         document.querySelector(".note").value = "";
     }
