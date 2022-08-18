@@ -8,12 +8,13 @@ document.body.append(myNotes);
 let notes = [];
 
 document.addEventListener("DOMContentLoaded", function(event) {
-    notes = JSON.parse(localStorage.getItem("note"));
+    let totalNotes = JSON.parse(localStorage.getItem("note"));
+    notes = totalNotes;
     if (notes !== null) {
-    for (let i = 0; i < notes.length; i++) {
-        let unorderedList = document.createElement("ul");
-        unorderedList.innerHTML += `<li>${notes[i]}</li>`;
-        document.querySelector(".result").append(unorderedList);
+        for (let i = 0; i < notes.length; i++) {
+            let unorderedList = document.createElement("ul");
+            unorderedList.innerHTML += `<li>${notes[i]}</li>`;
+            document.querySelector(".result").append(unorderedList);
     }}
 });
 
@@ -30,7 +31,6 @@ function showNote() {
         unorderedList.innerHTML += `<li>${note}</li>`;
         document.querySelector(".result").append(unorderedList);
         notes.push(note);
-        console.log(notes);
         localStorage.setItem("note", JSON.stringify(notes));
         document.querySelector(".note").value = "";
     }
